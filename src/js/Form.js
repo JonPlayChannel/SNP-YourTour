@@ -43,6 +43,7 @@ export const changeEmailInputStyles = () => {
     formEmailElement.addEventListener('blur', () => {
         if (!emailRegex.test(emailInputValue)) {
             formEmailElement.classList.add(stateClasses.invalid)
+            return
         }
 
         formEmailElement.classList.remove(stateClasses.invalid)
