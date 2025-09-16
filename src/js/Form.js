@@ -27,10 +27,9 @@ export const setInheritColorOnChange = () => {
 
 export const changeEmailInputStyles = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    let emailInputValue = formEmailElement.value
 
     formEmailElement.addEventListener('change', () => {
-        const emailInputValue = formEmailElement.value
-
         if (!emailRegex.test(emailInputValue)) {
             formEmailElement.classList.add(stateClasses.invalid)
         }
