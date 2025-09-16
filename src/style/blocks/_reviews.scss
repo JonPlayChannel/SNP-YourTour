@@ -1,0 +1,77 @@
+@use '../helpers' as *;
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: rem(98);
+
+  @include mobile-s {
+    row-gap: rem(49);
+  }
+
+  &__header {
+    max-width: rem(529);
+    display: grid;
+    justify-items: center;
+    row-gap: rem(28);
+
+    @include mobile {
+      row-gap: rem(20);
+    }
+  }
+
+  &__title {
+    font-size: rem(59);
+    line-height: 1.24;
+    letter-spacing: 0;
+    text-align: center;
+
+    @include mobile {
+      font-size: rem(40);
+      line-height: 1.12;
+      letter-spacing: 0.04rem;
+    }
+
+    @include mobile-s {
+      font-size: rem(34);
+    }
+  }
+
+  &__subtitle {
+    max-width: 75%;
+    font-size: rem(20);
+    line-height: 1.42;
+    letter-spacing: 0;
+    text-align: center;
+    color: var(--color-gray-300);
+
+    @include mobile {
+      max-width: 60%;
+      font-size: rem(16);
+    }
+
+    @include mobile-s {
+      max-width: 90%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    column-gap: rem(24);
+
+    @include laptop {
+      column-gap: rem(18);
+    }
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      row-gap: rem(24);
+    }
+
+    @include mobile-s {
+      row-gap: rem(18);
+    }
+  }
+}

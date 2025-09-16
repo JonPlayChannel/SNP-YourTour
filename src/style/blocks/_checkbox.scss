@@ -1,0 +1,92 @@
+@use '../helpers' as *;
+
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  column-gap: rem(19);
+
+  @include laptop {
+    column-gap: rem(11);
+  }
+
+  @include mobile {
+    align-items: start;
+    column-gap: rem(10);
+  }
+
+  &__controller,
+  &__emulator {
+    @include square(rem(26));
+
+    @include mobile {
+      @include square(rem(20));
+    }
+  }
+
+  &__controller {
+    position: absolute;
+    z-index: 100;
+    visibility: hidden;
+
+    &:checked ~ .checkbox__emulator::after {
+      content: '';
+      @include abs-center;
+      @include square(rem(26));
+      display: inline-flex;
+      background-image: url("/public/icons/check-mark.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include mobile {
+        background-size: rem(10) rem(6);
+      }
+    }
+  }
+
+  &__emulator {
+    position: relative;
+    flex-shrink: 0;
+    border: var(--form-input-border);
+    border-radius: rem(3);
+  }
+
+  &__label {
+    color: var(--color-gray-300);
+
+    @include mobile-s {
+      font-size: rem(16);
+      letter-spacing: 0.001em;
+    }
+  }
+
+  &__link {
+    position: relative;
+    color: var(--color-black);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: rem(1);
+      background-color: currentColor;
+      transition: width var(--transition-duration) ease;
+    }
+
+    @include hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:active {
+      color: var(--color-green-400);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

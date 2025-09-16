@@ -1,0 +1,6 @@
+@use 'helpers' as *;
+
+.container {
+  max-width: calc(var(--container-width));
+  margin-inline: auto;
+}

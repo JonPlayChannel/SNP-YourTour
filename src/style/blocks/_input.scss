@@ -1,0 +1,23 @@
+@use '../helpers' as *;
+
+.input {
+  outline: 0;
+  transition: box-shadow 0.2s ease-in-out;
+
+  &::placeholder {
+    color: var(--color-gray-300);
+  }
+
+  &:focus {
+    border: var(--form-item-border-focus);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--box-shadow);
+  }
+
+  &.invalid {
+    color: var(--color-invalid);
+    box-shadow: var(--box-shadow-invalid);
+  }
+}

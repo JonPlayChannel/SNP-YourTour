@@ -1,0 +1,84 @@
+@use '../helpers' as *;
+
+$icons: (
+        1: "/footer/telegram.svg",
+        2: "/footer/fb.svg",
+        3: "/footer/vk.svg",
+);
+
+.footer {
+  padding-block: rem(30);
+  font-size: rem(20);
+  line-height: 1.42;
+  letter-spacing: 0;
+  background-color: var(--color-beige-200);
+
+  @include mobile-s {
+    padding: 0;
+    font-size: rem(16);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include laptop {
+      margin-inline: 0;
+      padding-inline: rem(53);
+    }
+
+    @include mobile {
+      padding: rem(21) rem(21.5);
+      flex-direction: column;
+      row-gap: rem(5);
+    }
+  }
+
+  &__hint {
+    color: var(--color-gray-300);
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      color: var(--color-black);
+      column-gap: rem(25);
+
+      @include mobile-s {
+        column-gap: rem(15);
+      }
+    }
+
+    &-item {
+      display: inline-flex;
+      align-items: center;
+      column-gap: rem(11);
+
+      @include mobile-s {
+        column-gap: rem(5);
+      }
+
+      &::before {
+        content: '';
+        @include square(rem(26));
+        display: inline-flex;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include mobile-s {
+          width: rem(22);
+          height: rem(26);
+        }
+      }
+
+      @each $num, $icon in $icons {
+        &:nth-child(#{$num}) {
+          &::before {
+            background-image: url("#{$icon}");
+          }
+        }
+      }
+    }
+  }
+}

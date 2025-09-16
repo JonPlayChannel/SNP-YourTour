@@ -1,0 +1,59 @@
+@use 'helpers' as *;
+
+body,
+select,
+textarea {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
+  background-color: var(--color-beige-100);
+}
+
+main {
+  margin-bottom: rem(137);
+  display: grid;
+  row-gap: rem(134.4);
+
+  @include mobile {
+    margin-bottom: rem(76);
+    row-gap: rem(76);
+  }
+}
+
+h1, .h1,
+h2, .h2 {
+  font-weight: 700;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  &[class] {
+    text-decoration: none;
+    cursor: var(--cursor);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

@@ -1,0 +1,33 @@
+@use '../helpers' as *;
+
+.select {
+  position: relative;
+  font-size: rem(20);
+  line-height: 1.42;
+  letter-spacing: 0;
+  outline: 0;
+  transition: box-shadow 0.2s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  @include mobile-s {
+    font-size: rem(16);
+  }
+
+  &__option {
+    &:not([disabled]) {
+      color: var(--color-black);
+    }
+  }
+
+  &.not-selected {
+    color: var(--color-gray-300);
+  }
+
+  &:focus-visible {
+    &:not(.invalid) {
+      box-shadow: var(--box-shadow);
+    }
+  }
+}

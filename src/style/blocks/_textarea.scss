@@ -1,0 +1,21 @@
+@use '../helpers' as *;
+
+.textarea {
+  min-height: rem(152);
+  font-size: rem(20);
+  line-height: 1.42;
+  outline: 0;
+  transition: box-shadow 0.2s ease-in-out;
+
+  @include mobile {
+    min-height: rem(132);
+  }
+
+  &:focus {
+    border: var(--form-item-border-focus);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--box-shadow);
+  }
+}

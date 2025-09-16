@@ -1,0 +1,94 @@
+@use "../helpers" as *;
+
+.hero {
+  padding-top: rem(208);
+  padding-bottom: rem(120);
+  text-align: center;
+  color: var(--color-white);
+  background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 39.9%), linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("/background.png") 50% 50%;
+  background-size: cover;
+
+  @include mobile {
+    padding-top: rem(140);
+    padding-bottom: rem(52);
+  }
+
+  &__inner {
+    max-width: rem(768);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: rem(50);
+
+    @include mobile {
+      row-gap: rem(40);
+    }
+  }
+
+  &__title {
+    font-size: rem(96);
+    letter-spacing: 0.13rem;
+    line-height: 1.09;
+
+    @include mobile {
+      max-width: 75%;
+      font-size: rem(60);
+      letter-spacing: 0.04rem;
+      line-height: 1.12;
+    }
+
+    @include mobile-s {
+      font-size: rem(34);
+    }
+  }
+
+  &__subtitle,
+  &__link {
+    line-height: 1.42;
+  }
+
+  &__subtitle {
+    max-width: rem(562);
+    font-size: rem(20);
+    letter-spacing: 0;
+
+    @include laptop {
+      max-width: rem(400);
+    }
+
+    @include mobile {
+      max-width: rem(310);
+    }
+
+    @include mobile-s {
+      font-size: rem(16);
+    }
+  }
+
+  &__link {
+    font-size: rem(17);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    padding: rem(5) rem(20);
+    border-radius: rem(10);
+
+    @include mobile-above {
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-orange-200);
+      }
+
+      &:active {
+        color: var(--color-black);
+        background-color: var(--color-orange-100);
+      }
+    }
+
+    @include mobile-s {
+      font-size: rem(16);
+    }
+  }
+}

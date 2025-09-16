@@ -1,0 +1,90 @@
+@use "../helpers" as *;
+
+.contact-us {
+  width: rem(771);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: rem(30);
+
+  @include tablet {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  &__image {
+    @include square(rem(370));
+    display: inline-block;
+    background-image: url("/background.png");
+    background-position: 61% rem(2);
+    background-repeat: no-repeat;
+    background-size: rem(560) rem(371);
+    border-radius: rem(50);
+
+    @include tablet {
+      @include square(rem(220));
+      background-size: rem(300) rem(220);
+    }
+
+    @include mobile-s {
+      width: rem(130);
+      height: rem(133);
+      background-size: rem(200) rem(133);
+      border-radius: rem(20);
+    }
+  }
+
+  &__body {
+    max-width: rem(371);
+    display: inline-flex;
+    flex-direction: column;
+    row-gap: rem(22);
+
+    @include mobile {
+      align-items: center;
+    }
+  }
+
+  &__title,
+  &__message {
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: rem(35);
+    font-weight: 500;
+    line-height: 1.26;
+    letter-spacing: 0;
+
+    @include mobile-s {
+      width: 70%;
+      font-size: rem(23);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.06rem;
+    }
+  }
+
+  &__message {
+    font-size: rem(20);
+    line-height: 1.41;
+    letter-spacing: 0;
+    color: var(--color-gray-300);
+
+    @include mobile-s {
+      width: 85%;
+      font-size: rem(16);
+      line-height: 1.4;
+    }
+
+    &-link {
+      color: var(--color-black);
+    }
+  }
+}

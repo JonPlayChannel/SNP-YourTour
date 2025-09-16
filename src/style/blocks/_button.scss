@@ -1,0 +1,53 @@
+@use '../helpers' as *;
+
+.button {
+  width: rem(235);
+  height: rem(58);
+  padding-block: rem(15);
+  @include flex-center(true, false);
+  font-size: rem(20);
+  line-height: 1.42;
+  letter-spacing: 0;
+  border: none;
+  border-radius: rem(10);
+  cursor: var(--cursor);
+
+  @include mobile {
+    width: rem(134);
+    height: rem(47);
+  }
+
+  @include mobile-s {
+    font-size: rem(16);
+  }
+
+  &-find-tour {
+    color: var(--color-white);
+    background-color: var(--color-green-400);
+
+    @include mobile-above {
+      &:hover {
+        background-color: var(--color-green-300);
+      }
+
+      &:active {
+        background-color: var(--color-green-200);
+      }
+    }
+  }
+
+  &-reset {
+    color: var(--color-green-400);
+    background-color: var(--color-green-100);
+
+    @include mobile-above {
+      &:hover {
+        background-color: var(--color-gray-100);
+      }
+
+      &:active {
+        background-color: var(--color-gray-200);
+      }
+    }
+  }
+}

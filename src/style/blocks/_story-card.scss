@@ -1,0 +1,198 @@
+@use '../helpers' as *;
+
+$story-cards: (
+        1: "./stories/story-card-1.png",
+        2: "./stories/story-card-2.png",
+        3: "./stories/story-card-3.png"
+);
+
+.story-card {
+  position: relative;
+  height: rem(567);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color-white);
+  border-radius: rem(50);
+  overflow: hidden;
+  row-gap: rem(115);
+
+  @include mobile {
+    padding: rem(40);
+    height: rem(455);
+    border-radius: rem(20);
+  }
+
+  @include mobile {
+    width: rem(318);
+    padding-top: rem(32);
+    padding-left: rem(30);
+    padding-bottom: rem(30);
+    row-gap: 0;
+  }
+
+  @include hover(false) {
+    cursor: var(--cursor);
+
+    .story-card__details::after {
+      background-color: var(--color-green-400);
+    }
+
+    .story-card__image {
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    @include mobile-above {
+      .tour-cards__details::after {
+        background-color: var(--color-orange-200);
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    z-index: -50;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform var(--transition-duration) ease;
+  }
+
+  &__body {
+    padding-top: rem(62);
+    padding-left: rem(60);
+    padding-right: rem(556);
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(37);
+
+    @include laptop {
+      padding-right: rem(304);
+    }
+
+    @include tablet {
+      padding-right: 0;
+    }
+
+    @include mobile {
+      padding: 0;
+    }
+
+    @include mobile-s {
+      row-gap: rem(20);
+    }
+  }
+
+  &__title {
+    font-size: rem(35);
+    font-weight: 500;
+    line-height: 1.22;
+    letter-spacing: 0;
+
+    @include mobile {
+      width: 50%;
+      font-size: rem(23);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.04rem;
+    }
+  }
+
+  &__description,
+  &__links-list {
+    font-size: rem(20);
+    line-height: 1.41;
+    letter-spacing: 0;
+
+    @include mobile {
+      font-size: rem(16);
+      line-height: 1.42;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(27);
+
+    @include mobile {
+      row-gap: rem(25);
+    }
+  }
+
+  &__idea {
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__features-list {
+    padding-left: rem(30);
+    list-style-type: inherit;
+
+    @include mobile {
+      padding-left: rem(24);
+    }
+  }
+
+  &__footer {
+    padding-bottom: rem(60);
+    padding-inline: rem(60);
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile {
+      padding: 0;
+    }
+  }
+
+  &__details {
+    position: relative;
+    font-size: rem(23);
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: 0;
+
+    @include mobile {
+      font-size: rem(16);
+      line-height: 1.1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -50;
+      top: rem(-7);
+      left: rem(-21);
+      width: rem(199);
+      height: rem(42);
+      background-color: transparent;
+      border-radius: rem(50);
+      transition: background-color var(--transition-duration) ease;
+    }
+  }
+
+  &__links-list {
+    display: flex;
+    column-gap: rem(35);
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  @each $key, $img in $story-cards {
+    &:nth-child(#{$key}) {
+      .story-card__image {
+        background-image:
+          linear-gradient(270deg, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.2) 100%),
+          url("/#{$img}");
+      }
+    }
+  }
+}

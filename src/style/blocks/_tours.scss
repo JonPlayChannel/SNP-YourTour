@@ -1,0 +1,109 @@
+@use '../helpers' as *;
+
+.tours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    max-width: rem(700);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: rem(105);
+    row-gap: rem(35);
+
+    @include mobile {
+      margin-bottom: rem(50);
+      row-gap: rem(30);
+    }
+  }
+
+  &__title {
+    font-size: rem(59);
+    line-height: 1.24;
+    letter-spacing: 0;
+    text-align: center;
+
+    @include mobile {
+      font-size: rem(40);
+      line-height: 1.12;
+      letter-spacing: 0.04rem;
+    }
+
+    @include mobile-s {
+      font-size: rem(34);
+    }
+  }
+
+  &__menu {
+    display: flex;
+    column-gap: rem(30.2);
+
+    @include mobile {
+      flex-direction: column;
+      row-gap: rem(10);
+    }
+
+    &-group {
+      @include mobile-above {
+        display: contents;
+      }
+
+      @include mobile {
+        display: flex;
+        justify-content: center;
+        column-gap: rem(10);
+      }
+    }
+
+    &-link {
+      position: relative;
+      font-size: rem(23);
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: 0.004rem;
+
+      @include mobile {
+        font-size: rem(20);
+        line-height: 1.42;
+        letter-spacing: 0;
+      }
+
+      @include mobile-s {
+        font-size: rem(16);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: rem(-5);
+        left: 50%;
+        width: 0;
+        height: rem(2);
+        background-color: var(--color-black);
+        transition: width 0.25s ease;
+        transform: translateX(-50%);
+
+        @include mobile {
+          bottom: 0;
+        }
+      }
+
+      @include mobile-above {
+        &:hover::after {
+          width: 97%;
+        }
+      }
+
+      &.is-active {
+        color: var(--color-orange-200);
+        pointer-events: none;
+
+        &::after {
+          width: 97%;
+          background-color: currentColor;
+        }
+      }
+    }
+  }
+}

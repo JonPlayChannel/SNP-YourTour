@@ -1,0 +1,23 @@
+@use "../helpers" as *;
+
+.logo {
+  &__svg {
+    width: rem(181.84);
+    height: rem(32);
+
+    @include mobile {
+      width: rem(133);
+      height: rem(23);
+    }
+
+    &.is-active {
+      path {
+        fill: var(--color-black);
+      }
+    }
+
+    path {
+      transition: fill var(--transition-duration) ease;
+    }
+  }
+}

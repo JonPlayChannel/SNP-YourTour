@@ -1,0 +1,38 @@
+@use 'helpers' as *;
+
+:root {
+  --color-black: #1B1B1B;
+  --color-white: #FFFFFF;
+
+  --color-orange-100: #F8E6BE;
+  --color-orange-200: #EFA501;
+
+  --color-green-100: #E0F0E5;
+  --color-green-200: #627F7E;
+  --color-green-300: #3B7E7B;
+  --color-green-400: #286562;
+
+  --color-gray-100: #F1F3F2;
+  --color-gray-200: #D9DFDB;
+  --color-gray-300: #A6A6A6;
+
+  --color-beige-100: #F9F7F4;
+  --color-beige-200: #F4F0E9;
+
+  --color-invalid: #DC0000;
+
+  --tour-card-gradient: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%);
+
+  --form-item-border: #{rem(1)} solid var(--color-beige-200);
+  --form-item-border-focus: #{rem(1)} solid var(--color-beige-200);
+  --form-input-border: #{rem(2)} solid var(--color-black);
+
+  --box-shadow: 0 0 #{rem(2)} #{rem(2)} var(--color-green-200);
+  --box-shadow-invalid: 0 0 #{rem(2)} #{rem(2)} var(--color-invalid);
+
+  --container-width: #{rem(1170)};
+
+  --transition-duration: 0.2s;
+
+  --cursor: url("/cursor/custom-cursor.png"), pointer;
+}

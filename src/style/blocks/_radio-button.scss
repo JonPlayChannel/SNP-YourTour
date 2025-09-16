@@ -1,0 +1,45 @@
+@use '../helpers' as *;
+
+.radio-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  column-gap: rem(11);
+
+  @include mobile {
+    column-gap: rem(10);
+  }
+
+  &__controller,
+  &__emulator {
+    @include square(rem(26));
+
+    @include mobile {
+      @include square(rem(20));
+    }
+  }
+
+  &__controller {
+    position: absolute;
+    z-index: 100;
+    visibility: hidden;
+
+    &:checked ~ .radio-button__emulator::after {
+      content: '';
+      @include abs-center();
+      @include square(rem(12));
+      background-color: currentColor;
+      border-radius: 50%;
+
+      @include mobile {
+        @include square(rem(9));
+      }
+    }
+  }
+
+  &__emulator {
+    position: relative;
+    border: var(--form-input-border);
+    border-radius: 50%;
+  }
+}

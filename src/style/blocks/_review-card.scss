@@ -1,0 +1,150 @@
+@use '../helpers' as *;
+
+$images: (
+        1: "/reviews/user-image-1.png",
+        2: "/reviews/user-image-2.png"
+);
+
+.review-card {
+  width: rem(570);
+  height: rem(673);
+  display: flex;
+  flex-direction: column-reverse;
+  @include mobile-above {
+    justify-content: space-between;
+  }
+  background-color: var(--color-beige-200);
+  border-radius: rem(50);
+
+  @include laptop {
+    width: rem(450);
+    height: rem(841);
+  }
+
+  @include tablet {
+    width: 75%;
+    height: auto;
+  }
+
+  @include mobile {
+    border-radius: rem(20);
+  }
+
+  @include mobile-s {
+    width: rem(318);
+
+    &:nth-child(1) {
+      height: rem(408);
+    }
+  }
+
+  @each $num, $img in $images {
+    &:nth-child(#{$num}) {
+      .review-card__user-image {
+        background-image: url("#{$img}");
+        background-size: cover;
+
+        @if $num == 1 {
+          background-position-x: 55%;
+        } @else {
+          background-position: center 10%;
+        }
+
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &:nth-child(1) {
+    padding: rem(42) rem(44) rem(38) rem(38);
+
+    @include laptop {
+      padding: rem(42) rem(41) rem(38) rem(40);
+    }
+
+    @include mobile {
+      padding: rem(20);
+    }
+  }
+
+  &:nth-child(2) {
+    padding: rem(41) rem(38) rem(38) rem(44);
+
+    @include laptop {
+      padding-block: rem(42) rem(38);
+      padding-inline: rem(40);
+    }
+
+    @include mobile {
+      padding: rem(20)
+    }
+  }
+
+  &__user {
+    padding-top: rem(70);
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile-s {
+      align-items: end;
+      padding-top: rem(40);
+    }
+
+    &-details {
+      display: grid;
+      row-gap: rem(9);
+
+      @include mobile-s {
+        row-gap: rem(8);
+      }
+    }
+
+    &-name {
+      font-size: rem(35);
+      font-weight: 500;
+      line-height: 1.22;
+
+      @include mobile-s {
+        font-size: rem(23);
+        letter-spacing: 0.04rem;
+      }
+    }
+
+    &-tour {
+      color: var(--color-gray-300);
+      font-size: rem(17);
+      line-height: 1.42;
+      letter-spacing: -0.01rem;
+
+      @include mobile-s {
+        font-size: rem(16);
+      }
+    }
+
+    &-image {
+      @include square(rem(75));
+      display: inline-flex;
+      border-radius: 50%;
+    }
+  }
+
+  &__text-content {
+    display: grid;
+    font-size: rem(23);
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -0.001em;
+    row-gap: rem(27);
+
+    @include mobile {
+      font-size: rem(20);
+      line-height: 1.42;
+      letter-spacing: 0;
+    }
+
+    @include mobile-s {
+      width: 97%;
+      font-size: rem(16);
+    }
+  }
+}
