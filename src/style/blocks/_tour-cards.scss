@@ -1,12 +1,12 @@
 @use '../helpers' as *;
 
 $cards: (
-        1: "../public/tour-cards/tour-card-1.png",
-        2: "../public/tour-cards/tour-card-2.png",
-        3: "../public/tour-cards/tour-card-3.png",
-        4: "../public/tour-cards/tour-card-4.png",
-        5: "../public/tour-cards/tour-card-5.jpg",
-        6: "../public/tour-cards/tour-card-6.png"
+        1: "/public/tour-cards/tour-card-1.png",
+        2: "/public/tour-cards/tour-card-2.png",
+        3: "/public/tour-cards/tour-card-3.png",
+        4: "/public/tour-cards/tour-card-4.png",
+        5: "/public/tour-cards/tour-card-5.jpg",
+        6: "/public/tour-cards/tour-card-6.png"
 );
 
 .tour-cards {
