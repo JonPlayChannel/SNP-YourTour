@@ -50,7 +50,8 @@ $icons: (
       }
     }
 
-    &-item {
+    &-link {
+      position: relative;
       display: inline-flex;
       align-items: center;
       column-gap: rem(11);
@@ -61,6 +62,7 @@ $icons: (
 
       &::before {
         content: '';
+        position: relative;
         @include square(rem(26));
         display: inline-flex;
         background-position: center;
@@ -70,6 +72,12 @@ $icons: (
           width: rem(22);
           height: rem(26);
         }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
       }
 
       @each $num, $icon in $icons {
