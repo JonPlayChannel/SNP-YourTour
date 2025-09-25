@@ -7,6 +7,7 @@ import {
     setupDateValidationListeners,
 } from "./Form"
 
+console.clear()
 setHeaderScroll()
 setInheritColorOnChange()
 changeEmailInputStyles()
