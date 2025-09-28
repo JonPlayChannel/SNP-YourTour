@@ -170,14 +170,6 @@ const setupValidation = () => {
     findTourElement.addEventListener('click', (e) => {
         e.preventDefault()
 
-        isNameCorrect = isValidName(formNameElement.value)
-        isDestinationSelected = isValidDestination(formSelectElement)
-        isEmailCorrect = isValidEmail(formEmailElement.value)
-        isPhoneNumberCorrect = isValidPhone(formPhoneElement.value)
-        isDataCorrect = areDatesCorrect(formDateFromElement.value, formDateToElement.value)
-        isUserAdult = isUser18OrMore()
-        doesUserAgree = isCheckboxChecked()
-
         if (!isNameCorrect) {
             alert("Неверно заполнено поле \"Имя\".")
             formNameElement.classList.add(stateClasses.invalid)
