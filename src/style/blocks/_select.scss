@@ -23,6 +23,10 @@
 
   &.not-selected {
     color: var(--color-gray-300);
+
+    &.invalid {
+      box-shadow: var(--box-shadow-invalid);
+    }
   }
 
   &:focus-visible {

@@ -16,8 +16,8 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YourTour</title>
-    <script type="module" crossorigin src="/assets/index-BS9Ndvjk.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DJqgTd0P.css">
+    <script type="module" crossorigin src="/assets/index-BgP7_Ide.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CQGXepDu.css">
   </head>
   <body>
     <header class="header" data-js-header>
@@ -159,6 +159,7 @@
                       id="user-name"
                       placeholder="Введите Ваше имя"
                       required
+                      data-js-form-name
               />
             </div>
             <div class="form__item">
@@ -246,6 +247,7 @@
                   id="yes"
                   name="is-adult"
                   value="yes"
+                  data-js-form-is-adult
                 />
                 <span class="radio-button__emulator"></span>
                 <span class="radio-button__label">Да</span>
@@ -257,6 +259,7 @@
                         id="no"
                         name="is-adult"
                         value="no"
+                        data-js-form-not-adult
                 />
                 <span class="radio-button__emulator"></span>
                 <span class="radio-button__label">Нет</span>
@@ -270,6 +273,7 @@
                 type="checkbox"
                 id="i-agree"
                 name="i-agree"
+                data-js-form-checkbox
               />
               <span class="checkbox__emulator"></span>
               <span class="checkbox__label">
@@ -279,12 +283,13 @@
             </label>
           </div>
           <div class="form__buttons">
-            <a
+            <button
               class="form__button button button-find-tour"
-              href="#tours"
+              type="submit"
+              data-js-form-button-find-tour
             >
               Найти тур
-            </a>
+            </button>
             <button
               class="form__buttons button button-reset"
               type="reset"

@@ -1,237 +1,226 @@
 const selectors = {
     root: '[data-js-form]',
+    formName: '[data-js-form-name]',
     formSelect: '[data-js-form-select]',
     formEmail: '[data-js-form-email]',
     formPhone: '[data-js-form-phone]',
     formDateForm: '[data-js-form-date-from]',
     formDateTo: '[data-js-form-date-to]',
+    isAdultRadioButton: '[data-js-form-is-adult]',
+    notAdultRadioButton: '[data-js-form-not-adult]',
+    formCheckbox: '[data-js-form-checkbox]',
+    findTourButton: '[data-js-form-button-find-tour]'
 }
 
 const stateClasses = {
     notSelected: 'not-selected',
-    invalid: 'invalid',
+    invalid: 'invalid'
 }
 
 const rootElement = document.querySelector(selectors.root)
+const formNameElement = document.querySelector(selectors.formName)
 const formSelectElement = rootElement.querySelector(selectors.formSelect)
 const formEmailElement = rootElement.querySelector(selectors.formEmail)
 const formPhoneElement = rootElement.querySelector(selectors.formPhone)
 const formDateFromElement = rootElement.querySelector(selectors.formDateForm)
 const formDateToElement = rootElement.querySelector(selectors.formDateTo)
+const isAdultRadioElement = document.querySelector(selectors.isAdultRadioButton)
+const notAdultRadioElement = document.querySelector(selectors.notAdultRadioButton)
+const formCheckboxElement = document.querySelector(selectors.formCheckbox)
+const findTourElement = document.querySelector(selectors.findTourButton)
 
-export const setInheritColorOnChange = () => {
-    formSelectElement.addEventListener('change', () => {
-        formSelectElement.classList.remove(stateClasses.notSelected)
-    })
+const today = new Date().setHours(0, 0, 0, 0)
+
+let isNameCorrect = false
+let isDestinationSelected = false
+let isEmailCorrect = false
+let isPhoneNumberCorrect = false
+let isDataCorrect = false
+let isUserAdult = false
+let doesUserAgree = false
+
+const isValidName = (name) => {
+    return name.trim().length > 0
 }
 
-export const changeEmailInputStyles = () => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-
-    formEmailElement.addEventListener('change', () => {
-        const emailInputValue = formEmailElement.value
-
-        if (!emailRegex.test(emailInputValue)) {
-            formEmailElement.classList.add(stateClasses.invalid)
-        }
-    })
-
-    formEmailElement.addEventListener('input', () => {
-        formEmailElement.classList.remove(stateClasses.invalid)
-    })
-
-    formEmailElement.addEventListener('blur', () => {
-        formEmailElement.classList.remove(stateClasses.invalid)
-    })
+const isValidDestination = (select) => {
+    return select.value !== ''
 }
 
-export const formatPhoneNumber = () => {
-    formPhoneElement.addEventListener('input', () => {
-        const numbers = formPhoneElement.value.replace(/\D/g, '').substring(0, 11)
-
-        const cleanNumbers = numbers.startsWith('7') || numbers.startsWith('8')
-            ? numbers.substring(1)
-            : numbers
-
-        formPhoneElement.value = '+7'
-            + (cleanNumbers.length > 0 ? ' (' + cleanNumbers.substring(0, 3) : '')
-            + (cleanNumbers.length > 3 ? ') ' + cleanNumbers.substring(3, 6) : '')
-            + (cleanNumbers.length > 6 ? '-' + cleanNumbers.substring(6, 8) : '')
-            + (cleanNumbers.length > 8 ? '-' + cleanNumbers.substring(8, 10) : '')
-
-        formPhoneElement.setSelectionRange(formPhoneElement.value.length, formPhoneElement.value.length);
-    })
+const isValidEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return re.test(email)
 }
 
-function validateDate(formDateElement) {
-    if (!formDateElement) return false
+const isValidPhone = (phone) => {
+    const maskRe = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/
+    return maskRe.test(phone)
+}
 
-    const value = formDateElement.value.trim()
+const formatPhone = () => {
+    let numbers = formPhoneElement.value.replace(/\D/g, '').substring(0, 11)
+    const cleanNumbers = numbers.startsWith('7') || numbers.startsWith('8') ? numbers.substring(1) : numbers
+    formPhoneElement.value = '+7'
+        + (cleanNumbers.length > 0 ? ' (' + cleanNumbers.substring(0, 3) : '')
+        + (cleanNumbers.length > 3 ? ') ' + cleanNumbers.substring(3, 6) : '')
+        + (cleanNumbers.length > 6 ? '-' + cleanNumbers.substring(6, 8) : '')
+        + (cleanNumbers.length > 8 ? '-' + cleanNumbers.substring(8, 10) : '')
+    formPhoneElement.setSelectionRange(formPhoneElement.value.length, formPhoneElement.value.length)
+}
 
-    const dateRegex = /^(\d{2})\.(\d{2})\.(\d{4})$/
-    if (!dateRegex.test(value)) {
+const isValidDate = (dateStr) => {
+    const re = /^(\d{2})\.(\d{2})\.(\d{4})$/
+    const match = dateStr.match(re)
+    if (!match) return false
+
+    const day = parseInt(match[1], 10)
+    const month = parseInt(match[2], 10) - 1
+    const year = parseInt(match[3], 10)
+    const date = new Date(year, month, day)
+    if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return false
+
+    return date.setHours(0, 0, 0, 0) >= today;
+
+}
+
+const areDatesCorrect = (from, to) => {
+    if (!isValidDate(from) || !isValidDate(to)) return false
+
+    const [df, mf, yf] = from.split('.').map(Number)
+    const [dt, mt, yt] = to.split('.').map(Number)
+
+    const dateFrom = new Date(yf, mf - 1, df)
+    const dateTo = new Date(yt, mt - 1, dt)
+
+    if (dateFrom < today || dateTo < today) return false
+
+    return dateFrom <= dateTo
+}
+
+const isUser18OrMore = () => {
+    if (!isAdultRadioElement.checked && !notAdultRadioElement.checked) {
         return false
-    }
-
-    const [, day, month, year] = value.match(dateRegex)
-    const dayNum = parseInt(day, 10)
-    const monthNum = parseInt(month, 10)
-    const yearNum = parseInt(year, 10)
-
-    if (dayNum < 1 || dayNum > 31) return false
-    if (monthNum < 1 || monthNum > 12) return false
-    if (yearNum < 1000 || yearNum > 9999) return false
-
-    if (monthNum === 2 && dayNum > 29) return false
-    if ([4, 6, 9, 11].includes(monthNum) && dayNum > 30) return false
-
-    if (monthNum === 2 && dayNum === 29) {
-        const isLeapYear = (yearNum % 4 === 0 && yearNum % 100 !== 0) || (yearNum % 400 === 0)
-        if (!isLeapYear) return false
-    }
-
-    const inputDate = new Date(yearNum, monthNum - 1, dayNum)
-
-    if (inputDate.getDate() !== dayNum ||
-        inputDate.getMonth() !== monthNum - 1 ||
-        inputDate.getFullYear() !== yearNum) {
+    } else if (notAdultRadioElement.checked) {
         return false
-    }
-
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-
-    if (inputDate < today) {
-        return false
-    }
-
-    if (formDateElement === formDateToElement && formDateFromElement && formDateFromElement.value) {
-        const fromValue = formDateFromElement.value.trim()
-        if (dateRegex.test(fromValue)) {
-            const [, fromDay, fromMonth, fromYear] = fromValue.match(dateRegex)
-            const fromDate = new Date(parseInt(fromYear), parseInt(fromMonth) - 1, parseInt(fromDay))
-
-            if (inputDate < fromDate) {
-                return false
-            }
-        }
     }
 
     return true
 }
 
-function formatDate(formDateElement) {
-    if (!formDateElement) return
+const isCheckboxChecked = () => {
+    return formCheckboxElement.checked
+}
 
-    const cursorPosition = formDateElement.selectionStart
-    let numbers = formDateElement.value.replace(/\D/g, '')
-    numbers = numbers.substring(0, 8)
+const formatDate = (input) => {
+    let val = input.value.replace(/\D/g, '')
+    if (val.length > 2) val = val.slice(0, 2) + '.' + val.slice(2)
+    if (val.length > 5) val = val.slice(0, 5) + '.' + val.slice(5, 9)
+    input.value = val.slice(0, 10)
+}
 
-    let formatted = ''
-    if (numbers.length > 0) formatted = numbers.substring(0, 2)
-    if (numbers.length > 2) formatted += '.' + numbers.substring(2, 4)
-    if (numbers.length > 4) formatted += '.' + numbers.substring(4, 8)
+const setupValidation = () => {
+    formNameElement.addEventListener('input', () => {
+        formNameElement.classList.remove(stateClasses.invalid)
+        isNameCorrect = isValidName(formNameElement.value)
+    })
 
-    formDateElement.value = formatted
+    formSelectElement.addEventListener('change', () => {
+        formSelectElement.classList.remove(stateClasses.invalid, stateClasses.notSelected)
+        isDestinationSelected = isValidDestination(formSelectElement)
+    })
 
-    let newCursorPosition = cursorPosition
-    if (cursorPosition === 3 && numbers.length >= 2) newCursorPosition = 4
-    if (cursorPosition === 6 && numbers.length >= 4) newCursorPosition = 7
-    formDateElement.setSelectionRange(newCursorPosition, newCursorPosition)
+    formEmailElement.addEventListener('input', () => {
+        formEmailElement.classList.remove(stateClasses.invalid)
+        isEmailCorrect = isValidEmail(formEmailElement.value)
+    })
 
-    if (formatted.length === 10) {
-        const isValid = validateDate(formDateElement)
-        if (isValid) {
-            formDateElement.classList.remove(stateClasses.invalid)
-        } else {
-            formDateElement.classList.add(stateClasses.invalid)
+    formPhoneElement.addEventListener('input', () => {
+        formatPhone()
+        formPhoneElement.classList.remove(stateClasses.invalid)
+        isPhoneNumberCorrect = isValidPhone(formPhoneElement.value)
+    })
+
+    const validateDates = () => {
+        formDateFromElement.classList.remove(stateClasses.invalid)
+        formDateToElement.classList.remove(stateClasses.invalid)
+        isDataCorrect = areDatesCorrect(formDateFromElement.value, formDateToElement.value)
+    }
+
+    formDateFromElement.addEventListener('input', () => {
+        formatDate(formDateFromElement)
+        validateDates()
+    })
+
+    formDateToElement.addEventListener('input', () => {
+        formatDate(formDateToElement)
+        validateDates()
+    })
+
+    const validateAdult = () => {
+        isUserAdult = isUser18OrMore()
+    }
+
+    isAdultRadioElement.addEventListener('change', validateAdult)
+    notAdultRadioElement.addEventListener('change', validateAdult)
+
+    formCheckboxElement.addEventListener('change', () => {
+        doesUserAgree = isCheckboxChecked()
+    })
+
+    findTourElement.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        isNameCorrect = isValidName(formNameElement.value)
+        isDestinationSelected = isValidDestination(formSelectElement)
+        isEmailCorrect = isValidEmail(formEmailElement.value)
+        isPhoneNumberCorrect = isValidPhone(formPhoneElement.value)
+        isDataCorrect = areDatesCorrect(formDateFromElement.value, formDateToElement.value)
+        isUserAdult = isUser18OrMore()
+        doesUserAgree = isCheckboxChecked()
+
+        if (!isNameCorrect) {
+            alert("Неверно заполнено поле \"Имя\".")
+            formNameElement.classList.add(stateClasses.invalid)
         }
-    } else {
-        formDateElement.classList.remove(stateClasses.invalid)
-    }
-}
 
-function validateDateWithAlert(formDateElement) {
-    if (!formDateElement || !formDateElement.value) return
-
-    const isValid = validateDate(formDateElement)
-    if (!isValid) {
-        if (formDateElement === formDateFromElement) {
-            alert('Поле "Дата от" не может имеет значение раньше сегодняшнего дня')
-        } else {
-            if (formDateFromElement && formDateFromElement.value) {
-                alert('Поле "Дата до" не может имеет значение раньше поля "Дата от"')
-            } else {
-                alert('Поле "Дата до" не может имеет значение раньше сегодняшнего дня')
-            }
+        if (!isDestinationSelected) {
+            alert("Не выбрано направление.")
+            formSelectElement.classList.add(stateClasses.invalid, stateClasses.notSelected)
         }
-        formDateElement.value = ''
-        formDateElement.classList.remove(stateClasses.invalid)
-    }
+
+        if (!isEmailCorrect) {
+            alert("Допущена ошибка а адресе электронной почты.")
+            formEmailElement.classList.add(stateClasses.invalid)
+        }
+
+        if (!isPhoneNumberCorrect) {
+            alert("Неверный формат номера телефона.")
+            formPhoneElement.classList.add(stateClasses.invalid)
+        }
+
+        if (!isDataCorrect) {
+            alert("Проверьте правильность введённых дат.")
+            formDateFromElement.classList.add(stateClasses.invalid)
+            formDateToElement.classList.add(stateClasses.invalid)
+        }
+
+        if (!isUserAdult) alert("Для использования данного сервиса вам должно быть 18 лет или больше.")
+
+        if (!doesUserAgree) alert("Вы не приняли условия Лицензионного договора. Пожалуйста, отметьте соответствующее поле.")
+
+        if (
+            isNameCorrect &&
+            isDestinationSelected &&
+            isEmailCorrect &&
+            isPhoneNumberCorrect &&
+            isDataCorrect &&
+            isUserAdult &&
+            doesUserAgree
+        ) {
+            alert("Спасибо за вашу заявку!")
+            rootElement.submit()
+        }
+    })
 }
 
-export function setupDateValidationListeners() {
-    if (formDateFromElement) {
-        formDateFromElement.addEventListener('input', function(e) {
-            if (e.data && !/\d/.test(e.data)) {
-                this.value = this.value.replace(/[^\d.]/g, '')
-            }
-            formatDate(this)
-        })
-
-        formDateFromElement.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault()
-                validateDateWithAlert(this)
-            }
-
-            if (!e.ctrlKey && !e.altKey && !e.metaKey && e.key.length === 1 && !/\d/.test(e.key)) {
-                e.preventDefault()
-            }
-        })
-
-        formDateFromElement.addEventListener('blur', function() {
-            validateDateWithAlert(this)
-        })
-
-        formDateFromElement.addEventListener('paste', function(e) {
-            e.preventDefault()
-            const pastedText = (e.clipboardData || window.clipboardData).getData('text')
-            const numbers = pastedText.replace(/\D/g, '')
-            this.value = this.value + numbers
-            formatDate(this)
-        })
-    }
-
-    if (formDateToElement) {
-        formDateToElement.addEventListener('input', function(e) {
-            if (e.data && !/\d/.test(e.data)) {
-                this.value = this.value.replace(/[^\d.]/g, '')
-            }
-            formatDate(this)
-        })
-
-        formDateToElement.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault()
-                validateDateWithAlert(this)
-            }
-
-            if (!e.ctrlKey && !e.altKey && !e.metaKey && e.key.length === 1 && !/\d/.test(e.key)) {
-                e.preventDefault()
-            }
-        })
-
-        formDateToElement.addEventListener('blur', function() {
-            validateDateWithAlert(this)
-        })
-
-        formDateToElement.addEventListener('paste', function(e) {
-            e.preventDefault()
-            const pastedText = (e.clipboardData || window.clipboardData).getData('text')
-            const numbers = pastedText.replace(/\D/g, '')
-            this.value = this.value + numbers
-            formatDate(this)
-        })
-    }
-}
+export default setupValidation
