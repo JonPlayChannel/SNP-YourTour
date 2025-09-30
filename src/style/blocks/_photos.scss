@@ -181,7 +181,8 @@ $styles-small: (
     }
 
     &[data-index="9"] {
-      background-size: 100% rem(630);
+      background-position-y: 53%;
+      background-size: 100% rem(600);
     }
 
     &[data-index="13"] {
@@ -208,7 +209,7 @@ $styles-small: (
       &[data-index="1"],
       &[data-index="4"] {
         background-position: center;
-        background-size: rem(350) rem(300);
+        background-size: rem(355) rem(300);
       }
 
       &[data-index="9"] {
@@ -236,10 +237,11 @@ $styles-small: (
       }
 
       &[data-index="1"], &[data-index="4"] {
-        background-size: rem(165) rem(110);
+        background-size: rem(170) rem(110);
       }
 
       &[data-index="9"] {
+        background-position-y: 50%;
         background-size: 100% rem(150);
       }
     }
