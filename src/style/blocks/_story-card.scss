@@ -195,4 +195,12 @@ $story-cards: (
       }
     }
   }
+
+  &:active {
+    @include mobile-above {
+      .story-card__details::after {
+        background-color: var(--color-orange-200);
+      }
+    }
+  }
 }

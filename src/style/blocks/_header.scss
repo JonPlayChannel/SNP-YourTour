@@ -1,7 +1,24 @@
 @use "../helpers" as *;
 
+@keyframes slideDownHeader {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpHeader {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 .header {
-  //display: none;
   position: absolute;
   z-index: 1000;
   width: 100%;
@@ -10,7 +27,9 @@
   transition:
           color var(--transition-duration) ease,
           background-color var(--transition-duration) ease,
-          backdrop-filter var(--transition-duration) ease;
+          backdrop-filter var(--transition-duration) easeб
+          transform var(--transition-duration) ease;
+  transform: translateY(0);
 
   @include laptop {
     padding-inline: rem(57);
@@ -80,10 +99,21 @@
     }
   }
 
-  &.is-active {
+  &.is-active,
+  &.is-hiding {
     position: fixed;
     color: var(--color-black);
     background-color: rgba(243, 239, 232, 0.6);
     backdrop-filter: blur(rem(54));
+  }
+
+  &.is-active {
+    transform: translateY(-100%);
+    animation: slideDownHeader calc(var(--transition-duration) * 3) ease forwards;
+  }
+
+  &.is-hiding {
+    transform: translateY(0);
+    animation: slideUpHeader calc(var(--transition-duration) * 3) ease forwards;
   }
 }
