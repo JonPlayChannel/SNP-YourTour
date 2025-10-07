@@ -24,11 +24,7 @@
   width: 100%;
   padding-block: rem(28.29);
   color: var(--color-white);
-  transition:
-          color var(--transition-duration) ease,
-          background-color var(--transition-duration) ease,
-          backdrop-filter var(--transition-duration) easeб
-          transform var(--transition-duration) ease;
+  transition: transform var(--transition-duration) ease;
   transform: translateY(0);
 
   @include laptop {

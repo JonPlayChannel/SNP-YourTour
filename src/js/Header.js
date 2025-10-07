@@ -20,6 +20,10 @@ const handleScroll = () => {
         logoSvgElement.classList.add(stateClasses.isActive)
         rootElement.classList.add(stateClasses.isActive)
         rootElement.classList.remove(stateClasses.isHiding)
+    } else if (currentScrollY < 80) {
+        logoSvgElement.classList.remove(stateClasses.isActive)
+        rootElement.classList.remove(stateClasses.isActive)
+        rootElement.classList.remove(stateClasses.isHiding)
     } else {
         if (currentScrollY < lastScrollY) {
             if (rootElement.classList.contains(stateClasses.isActive)) {
