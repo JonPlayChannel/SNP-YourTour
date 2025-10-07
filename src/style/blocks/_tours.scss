@@ -77,12 +77,11 @@
         content: '';
         position: absolute;
         bottom: rem(-5);
-        left: 50%;
+        left: 0;
         width: 0;
         height: rem(2);
         background-color: var(--color-black);
         transition: width 0.25s ease;
-        transform: translateX(-50%);
 
         @include mobile {
           bottom: 0;
@@ -91,7 +90,7 @@
 
       @include mobile-above {
         &:hover::after {
-          width: 97%;
+          width: 100%;
         }
       }
 
@@ -100,7 +99,7 @@
         pointer-events: none;
 
         &::after {
-          width: 97%;
+          width: 100%;
           background-color: currentColor;
         }
       }

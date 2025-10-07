@@ -115,6 +115,27 @@ $story-cards: (
     }
   }
 
+  &__links-item {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: rem(-2);
+      width: 0;
+      height: rem(2);
+      background-color: currentColor;
+      transition: width var(--transition-duration) ease;
+    }
+
+    @include hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
   &__description {
     display: flex;
     flex-direction: column;

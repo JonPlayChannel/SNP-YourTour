@@ -84,7 +84,25 @@
     }
 
     &-link {
+      position: relative;
       color: var(--color-black);
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: rem(-3);
+        width: 0;
+        height: rem(1);
+        background-color: currentColor;
+        transition: width var(--transition-duration) ease;
+      }
+
+      @include hover {
+        &::after {
+          width: 100%;
+        }
+      }
     }
   }
 }
