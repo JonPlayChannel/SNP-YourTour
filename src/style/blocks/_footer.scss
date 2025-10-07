@@ -50,6 +50,16 @@ $icons: (
       }
     }
 
+    &-item {
+      @each $num, $icon in $icons {
+        &:nth-child(#{$num}) {
+          .footer__nav-link::before {
+            background-image: url("#{$icon}");
+          }
+        }
+      }
+    }
+
     &-link {
       position: relative;
       display: inline-flex;
