@@ -1,6 +1,8 @@
 @use "../helpers" as *;
 
 .hero {
+  width: 100vw;
+  min-height: rem(488);
   padding-top: rem(208);
   padding-bottom: rem(120);
   text-align: center;
@@ -35,13 +37,9 @@
 
     @include mobile {
       max-width: 75%;
-      font-size: rem(60);
+      font-size: rem(34);
       letter-spacing: 0.04rem;
       line-height: 1.12;
-    }
-
-    @include mobile-s {
-      font-size: rem(34);
     }
   }
 
@@ -55,15 +53,12 @@
     font-size: rem(20);
     letter-spacing: 0;
 
-    @include laptop {
+    @include tablet {
       max-width: rem(400);
     }
 
     @include mobile {
       max-width: rem(310);
-    }
-
-    @include mobile-s {
       font-size: rem(16);
     }
   }
@@ -87,7 +82,7 @@
       }
     }
 
-    @include mobile-s {
+    @include mobile {
       font-size: rem(16);
     }
   }

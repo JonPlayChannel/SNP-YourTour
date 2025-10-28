@@ -25,13 +25,9 @@
     text-align: center;
 
     @include mobile {
-      font-size: rem(40);
+      font-size: rem(34);
       line-height: 1.12;
       letter-spacing: 0.04rem;
-    }
-
-    @include mobile-s {
-      font-size: rem(34);
     }
   }
 
@@ -64,13 +60,9 @@
       letter-spacing: 0.004rem;
 
       @include mobile {
-        font-size: rem(20);
+        font-size: rem(16);
         line-height: 1.42;
         letter-spacing: 0;
-      }
-
-      @include mobile-s {
-        font-size: rem(16);
       }
 
       &::after {
