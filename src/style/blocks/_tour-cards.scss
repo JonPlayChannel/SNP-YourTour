@@ -10,26 +10,23 @@ $cards: (
 );
 
 .tour-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   color: var(--color-white);
   gap: rem(30);
 
-  @include laptop {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: rem(18);
+  @include tablet {
+    padding-inline: rem(20);
   }
 
-  @include tablet {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+  @include mobile {
+    flex-direction: column;
+    row-gap: rem(18);
   }
 
   &__item {
     position: relative;
-    width: rem(370);
     height: rem(531);
     padding: rem(50);
     display: flex;
@@ -38,27 +35,26 @@ $cards: (
     border-radius: rem(50);
     overflow: hidden;
 
+    @include tablet-above {
+      width: rem(370);
+    }
+
     @each $num, $img in $cards {
       &:nth-child(#{$num}) {
         .tour-cards__image {
           background-image:
-                  linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%),
-                  url("/public/tour-cards/#{$img}");
+            linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.5) 100%),
+            url("/public/tour-cards/#{$img}");
         }
       }
     }
 
-    @include laptop {
-      width: rem(450);
-    }
-
-    @include mobile-s {
+    @include mobile {
       --size: #{rem(318)};
 
       padding: rem(25);
-      border-radius: rem(20);
-
       @include square(var(--size));
+      border-radius: rem(20);
     }
 
     @include hover(false) {
@@ -100,7 +96,7 @@ $cards: (
     display: grid;
     row-gap: rem(16);
 
-    @include laptop {
+    @include tablet {
       max-width: 100%;
     }
   }
@@ -111,7 +107,7 @@ $cards: (
     line-height: 1.22;
     letter-spacing: 0.01rem;
 
-    @include mobile-s {
+    @include mobile {
       font-size: rem(23);
       line-height: 1.2;
       letter-spacing: 0.065rem;
@@ -123,7 +119,7 @@ $cards: (
     line-height: 1.42;
     letter-spacing: -0.01rem;
 
-    @include mobile-s {
+    @include mobile {
       font-size: rem(16);
       line-height: 1.1;
     }
@@ -137,7 +133,7 @@ $cards: (
     line-height: 1.22;
     letter-spacing: 0;
 
-    @include mobile-s {
+    @include mobile {
       font-size: rem(16);
       line-height: 1.1;
     }

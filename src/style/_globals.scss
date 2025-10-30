@@ -25,7 +25,11 @@ main {
 }
 
 section {
-  scroll-margin-top: rem(100);
+  scroll-margin-top: rem(120);
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 h1, .h1,

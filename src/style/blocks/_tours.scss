@@ -33,11 +33,13 @@
 
   &__menu {
     display: flex;
-    column-gap: rem(30.2);
+    flex-wrap: wrap;
+    gap: rem(30.2);
 
     @include mobile {
-      flex-direction: column;
-      row-gap: rem(10);
+      padding-inline: rem(14);
+      justify-content: center;
+      gap: rem(10);
     }
 
     &-group {
@@ -80,8 +82,8 @@
         }
       }
 
-      @include mobile-above {
-        &:hover::after {
+      @include hover(false) {
+        &::after {
           width: 100%;
         }
       }

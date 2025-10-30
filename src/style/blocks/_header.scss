@@ -29,7 +29,6 @@
   transition: transform var(--transition-duration) ease;
   transform: translateY(0);
 
-
   @include mobile {
     padding: rem(33) rem(20);
   }
@@ -59,7 +58,7 @@
         transition: width var(--transition-duration) ease;
       }
 
-      @include hover {
+      @include hover(false) {
         &::after {
           width: 97%;
         }
@@ -70,12 +69,8 @@
       display: flex;
       column-gap: rem(50);
 
-      @include tablet {
+      @include desktop-below {
         column-gap: rem(30);
-      }
-
-      @include mobile {
-        display: none;
       }
     }
   }

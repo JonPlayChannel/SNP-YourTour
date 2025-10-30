@@ -53,7 +53,7 @@
     font-size: rem(20);
     letter-spacing: 0;
 
-    @include tablet {
+    @include desktop-below {
       max-width: rem(400);
     }
 
