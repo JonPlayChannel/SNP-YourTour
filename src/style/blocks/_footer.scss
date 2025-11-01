@@ -13,7 +13,7 @@ $icons: (
   letter-spacing: 0;
   background-color: var(--color-beige-200);
 
-  @include mobile-s {
+  @include mobile {
     padding: 0;
     font-size: rem(16);
   }
@@ -23,7 +23,7 @@ $icons: (
     justify-content: space-between;
     align-items: center;
 
-    @include laptop {
+    @include tablet {
       margin-inline: 0;
       padding-inline: rem(53);
     }
@@ -45,7 +45,7 @@ $icons: (
       color: var(--color-black);
       column-gap: rem(25);
 
-      @include mobile-s {
+      @include mobile {
         column-gap: rem(15);
       }
     }
@@ -66,7 +66,13 @@ $icons: (
       align-items: center;
       column-gap: rem(11);
 
-      @include mobile-s {
+      @include hover(false) {
+        .footer__nav-link-text::after {
+          width: 100%;
+        }
+      }
+
+      @include mobile {
         column-gap: rem(5);
       }
 
@@ -78,7 +84,7 @@ $icons: (
         background-position: center;
         background-repeat: no-repeat;
 
-        @include mobile-s {
+        @include mobile {
           width: rem(22);
           height: rem(26);
         }
@@ -92,7 +98,7 @@ $icons: (
 
       &-text {
         position: relative;
-        z-index: 2000;
+        z-index: 200;
 
         &::after {
           content: '';
@@ -103,12 +109,6 @@ $icons: (
           height: rem(1);
           background-color: currentColor;
           transition: width var(--transition-duration) ease;
-        }
-
-        @include hover {
-          &::after {
-            width: 100%;
-          }
         }
       }
     }
