@@ -9,7 +9,7 @@
   border-radius: rem(50);
   row-gap: rem(33.5);
 
-  @include laptop {
+  @include desktop-below {
     padding: rem(60);
     row-gap: rem(35);
   }
@@ -20,12 +20,9 @@
 
   @include mobile {
     padding: rem(20) rem(20) rem(40);
+    font-size: rem(16);
     border-radius: rem(30);
     row-gap: rem(30);
-  }
-
-  @include mobile-s {
-    font-size: rem(16);
   }
 
   &__inputs {
@@ -35,15 +32,11 @@
     column-gap: rem(30);
     row-gap: rem(32);
 
-    @include laptop {
-      column-gap: rem(20);
-      row-gap: rem(30.5);
-    }
-
     @include tablet {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(7, auto);
-      row-gap: rem(31);
+      column-gap: rem(20);
+      row-gap: rem(30.5);
     }
 
     @include mobile {
@@ -52,13 +45,9 @@
   }
 
   &__item {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     row-gap: rem(8);
-
-    @include mobile {
-      display: flex;
-      flex-direction: column;
-    }
 
     &:last-child {
       grid-column: -1 / 1;
@@ -75,12 +64,8 @@
       width: rem(500);
       height: rem(68);
 
-      @include laptop {
+      @include desktop-below {
         width: rem(389);
-      }
-
-      @include tablet {
-        width: 100%;
         height: rem(46);
         padding: rem(10);
       }
@@ -100,10 +85,6 @@
       background-position: center;
       background-repeat: no-repeat;
 
-      @include laptop {
-        left: 88%;
-      }
-
       @include tablet {
         top: 20%;
         left: 94%;
@@ -111,10 +92,6 @@
 
       @include mobile {
         top: 25%;
-        left: 93%;
-      }
-
-      @include mobile-s {
         left: 87%;
       }
     }
@@ -123,10 +100,6 @@
   &__age-check {
     display: grid;
     row-gap: rem(8);
-
-    @include laptop {
-      row-gap: rem(9);
-    }
   }
 
   &__radio-buttons {
@@ -155,7 +128,7 @@
     display: flex;
     column-gap: rem(30);
 
-    @include mobile-s {
+    @include mobile {
       justify-content: space-between;
       column-gap: 0;
     }

@@ -1,10 +1,11 @@
 @use '../helpers' as *;
 
 .application {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   row-gap: rem(100);
 
-  @include tablet {
+  @include desktop-below {
     padding-inline: rem(53);
   }
 
@@ -30,13 +31,9 @@
     text-align: center;
 
     @include mobile {
-      font-size: rem(40);
+      font-size: rem(34);
       line-height: 1.12;
       letter-spacing: 0.04rem;
-    }
-
-    @include mobile-s {
-      font-size: rem(34);
     }
   }
 
@@ -47,10 +44,6 @@
     letter-spacing: 0;
     text-align: center;
     color: var(--color-gray-300);
-
-    @include laptop {
-      max-width: 44%;
-    }
 
     @include mobile {
       max-width: 100%;

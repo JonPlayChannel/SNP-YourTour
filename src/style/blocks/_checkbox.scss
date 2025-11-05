@@ -6,10 +6,6 @@
   align-items: center;
   column-gap: rem(19);
 
-  @include laptop {
-    column-gap: rem(11);
-  }
-
   @include mobile {
     align-items: start;
     column-gap: rem(10);
@@ -54,7 +50,7 @@
   &__label {
     color: var(--color-gray-300);
 
-    @include mobile-s {
+    @include mobile {
       font-size: rem(16);
       letter-spacing: 0.001em;
     }

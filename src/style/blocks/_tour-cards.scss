@@ -16,17 +16,21 @@ $cards: (
   color: var(--color-white);
   gap: rem(30);
 
+  @include desktop-below {
+    gap: rem(18);
+  }
+
   @include tablet {
-    padding-inline: rem(20);
+    padding-inline: rem(53);
   }
 
   @include mobile {
     flex-direction: column;
-    row-gap: rem(18);
   }
 
   &__item {
     position: relative;
+    width: rem(370);
     height: rem(531);
     padding: rem(50);
     display: flex;
@@ -35,8 +39,8 @@ $cards: (
     border-radius: rem(50);
     overflow: hidden;
 
-    @include tablet-above {
-      width: rem(370);
+    @include desktop-below {
+      width: rem(450);
     }
 
     @each $num, $img in $cards {
@@ -96,7 +100,7 @@ $cards: (
     display: grid;
     row-gap: rem(16);
 
-    @include tablet {
+    @include desktop-below {
       max-width: 100%;
     }
   }
