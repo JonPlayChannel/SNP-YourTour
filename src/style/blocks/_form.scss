@@ -2,7 +2,8 @@
 
 .form {
   padding: rem(70);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   font-size: rem(20);
   line-height: 1.42;
   background-color: var(--color-white);
@@ -12,10 +13,6 @@
   @include desktop-below {
     padding: rem(60);
     row-gap: rem(35);
-  }
-
-  @include tablet {
-    padding: rem(40);
   }
 
   @include mobile {
@@ -32,11 +29,14 @@
     column-gap: rem(30);
     row-gap: rem(32);
 
+    @include desktop-below {
+      column-gap: rem(20);
+    }
+
     @include tablet {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(7, auto);
-      column-gap: rem(20);
-      row-gap: rem(30.5);
+      row-gap: rem(30);
     }
 
     @include mobile {
@@ -61,12 +61,16 @@
     border-radius: rem(10);
 
     &:not(.textarea) {
-      width: rem(500);
+      width: fluid(500, 389);
       height: rem(68);
 
-      @include desktop-below {
-        width: rem(389);
-        height: rem(46);
+      @include tablet {
+        width: 100%;
+        min-width: rem(278);
+      }
+
+      @include mobile {
+        height: rem(43);
         padding: rem(10);
       }
     }
@@ -86,7 +90,7 @@
       background-repeat: no-repeat;
 
       @include tablet {
-        top: 20%;
+        top: 35%;
         left: 94%;
       }
 

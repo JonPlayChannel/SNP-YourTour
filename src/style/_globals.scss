@@ -8,14 +8,13 @@ textarea {
 
 body {
   position: relative;
-  overflow-x: hidden;
-  height: rem(2000);
   background-color: var(--color-beige-100);
 }
 
 main {
   margin-bottom: rem(137);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   row-gap: rem(134.4);
 
   @include mobile {

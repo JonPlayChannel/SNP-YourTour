@@ -24,7 +24,7 @@ $mobile-max: 767.98;
 }
 
 @mixin tablet-above {
-  @media (min-width: rem($tablet-min)) {
+  @media (min-width: rem($tablet-max)) {
     @content;
   }
 }

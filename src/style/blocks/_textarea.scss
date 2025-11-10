@@ -1,12 +1,12 @@
 @use '../helpers' as *;
 
 .textarea {
+  width: 100%;
   min-height: rem(152);
   font-size: rem(20);
   line-height: 1.42;
   outline: 0;
   transition: box-shadow 0.2s ease-in-out;
-  resize: none;
 
   @include mobile {
     min-height: rem(132);
