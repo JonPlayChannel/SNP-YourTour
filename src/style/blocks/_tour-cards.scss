@@ -25,7 +25,9 @@ $cards: (
   }
 
   @include mobile {
+    padding-inline: rem(21);
     flex-direction: column;
+    align-items: center;
   }
 
   &__item {

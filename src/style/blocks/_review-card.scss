@@ -6,36 +6,25 @@ $images: (
 );
 
 .review-card {
-  width: rem(570);
-  height: rem(673);
+  width: fluid(570, 450);
+  min-height: rem(673);
   display: flex;
   flex-direction: column-reverse;
-  @include mobile-above {
-    justify-content: space-between;
-  }
+  justify-content: space-between;
   background-color: var(--color-beige-200);
   border-radius: rem(50);
 
-  @include laptop {
+  @include desktop-below {
     width: rem(450);
     height: rem(841);
   }
 
-  @include tablet {
-    width: 75%;
-    height: auto;
-  }
-
   @include mobile {
-    border-radius: rem(20);
-  }
-
-  @include mobile-s {
     width: rem(318);
-
-    &:nth-child(1) {
-      height: rem(408);
-    }
+    max-height: rem(592);
+    min-height: rem(408);
+    height: auto;
+    border-radius: rem(20);
   }
 
   @each $num, $img in $images {
@@ -58,25 +47,27 @@ $images: (
   &:nth-child(1) {
     padding: rem(42) rem(44) rem(38) rem(38);
 
-    @include laptop {
-      padding: rem(42) rem(41) rem(38) rem(40);
+    @include desktop-below {
+      padding: rem(39) rem(41) rem(42) rem(40);
     }
 
     @include mobile {
-      padding: rem(20);
+      padding-block: rem(22) rem(20);
+      padding-inline: rem(20);
     }
   }
 
   &:nth-child(2) {
     padding: rem(41) rem(38) rem(38) rem(44);
 
-    @include laptop {
-      padding-block: rem(42) rem(38);
+    @include desktop-below {
+      padding-block: rem(38) rem(42);
       padding-inline: rem(40);
     }
 
     @include mobile {
-      padding: rem(20)
+      padding-block: rem(20) rem(12);
+      padding-inline: rem(20);
     }
   }
 
@@ -85,7 +76,7 @@ $images: (
     display: flex;
     justify-content: space-between;
 
-    @include mobile-s {
+    @include mobile {
       align-items: end;
       padding-top: rem(40);
     }
@@ -94,7 +85,7 @@ $images: (
       display: grid;
       row-gap: rem(9);
 
-      @include mobile-s {
+      @include mobile {
         row-gap: rem(8);
       }
     }
@@ -104,7 +95,7 @@ $images: (
       font-weight: 500;
       line-height: 1.22;
 
-      @include mobile-s {
+      @include mobile {
         font-size: rem(23);
         letter-spacing: 0.04rem;
       }
@@ -116,7 +107,7 @@ $images: (
       line-height: 1.42;
       letter-spacing: -0.01rem;
 
-      @include mobile-s {
+      @include mobile {
         font-size: rem(16);
       }
     }
@@ -137,14 +128,10 @@ $images: (
     row-gap: rem(27);
 
     @include mobile {
-      font-size: rem(20);
-      line-height: 1.42;
-      letter-spacing: 0;
-    }
-
-    @include mobile-s {
       width: 97%;
       font-size: rem(16);
+      line-height: 1.415;
+      letter-spacing: 0;
     }
   }
 }

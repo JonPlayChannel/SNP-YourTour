@@ -40,7 +40,7 @@
     }
 
     @include mobile {
-      row-gap: rem(28);
+      row-gap: rem(31);
     }
   }
 
@@ -64,9 +64,12 @@
       width: fluid(500, 389);
       height: rem(68);
 
+      @include desktop-below {
+        width: rem(389);
+      }
+
       @include tablet {
         width: 100%;
-        min-width: rem(278);
       }
 
       @include mobile {
