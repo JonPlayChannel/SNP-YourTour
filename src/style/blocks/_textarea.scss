@@ -6,6 +6,7 @@
   font-size: rem(20);
   line-height: 1.42;
   outline: 0;
+  resize: vertical;
   transition: box-shadow 0.2s ease-in-out;
 
   @include mobile {

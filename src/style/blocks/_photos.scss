@@ -34,7 +34,7 @@ $styles-big: (
 
 $styles-medium: (
         1: (width: 314.67, height: 300),
-        3: (width: 314.67, height: 300),
+        3: (width: 314.67, height: 301),
         4: (width: 314.67, height: 300),
 
         5: (width: 231, height: 301),
@@ -66,12 +66,11 @@ $styles-small: (
   align-items: center;
   row-gap: rem(100);
 
-  @include laptop {
-    padding-inline: rem(20);
+  @include desktop-below {
+    padding-inline: rem(21);
   }
 
   @include mobile {
-    padding-inline: rem(21);
     row-gap: rem(50);
   }
 
@@ -93,13 +92,9 @@ $styles-small: (
     text-align: center;
 
     @include mobile {
-      font-size: rem(40);
+      font-size: rem(34);
       line-height: 1.12;
       letter-spacing: 0.04rem;
-    }
-
-    @include mobile-s {
-      font-size: rem(34);
     }
   }
 
@@ -112,21 +107,23 @@ $styles-small: (
     color: var(--color-gray-300);
 
     @include mobile {
-      max-width: 60%;
-      font-size: rem(16);
-    }
-
-    @include mobile-s {
       max-width: 100%;
+      font-size: rem(16);
     }
   }
 
   &__content {
     display: flex;
-    flex-direction: column;
-    row-gap: rem(30);
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: rem(30);
+
+    @include desktop-below {
+      column-gap: rem(20);
+    }
 
     @include mobile {
+      column-gap: rem(10);
       row-gap: rem(18);
     }
   }
@@ -137,7 +134,8 @@ $styles-small: (
     flex-wrap: wrap;
     gap: rem(30);
 
-    @include laptop {
+    @include desktop-below {
+      flex-wrap: nowrap;
       gap: rem(20);
     }
 
@@ -190,7 +188,7 @@ $styles-small: (
       background-size: 100% rem(600);
     }
 
-    @include laptop {
+    @include desktop-below {
       $skipped-photos: (2, 7, 13);
 
       @each $key, $values in $styles-medium {
@@ -218,7 +216,7 @@ $styles-small: (
       }
     }
 
-    @include mobile-s {
+    @include mobile {
       $skipped-photos: (2, 3, 6, 7, 12, 13);
 
       border-radius: rem(20);
