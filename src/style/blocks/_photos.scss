@@ -67,7 +67,7 @@ $styles-small: (
   row-gap: rem(100);
 
   @include desktop-below {
-    padding-inline: rem(21);
+    padding-inline: rem(20);
   }
 
   @include mobile {
@@ -216,9 +216,17 @@ $styles-small: (
       }
     }
 
-    @include mobile {
+    @include tablet {
       $skipped-photos: (2, 3, 6, 7, 12, 13);
 
+      @each $skip in $skipped-photos {
+        &[data-index="#{$skip}"] {
+          display: none;
+        }
+      }
+    }
+
+    @include mobile {
       border-radius: rem(20);
 
       @each $key, $values in $styles-small {
@@ -228,14 +236,13 @@ $styles-small: (
         }
       }
 
-      @each $skip in $skipped-photos {
-        &[data-index="#{$skip}"] {
-          display: none;
-        }
-      }
 
       &[data-index="1"], &[data-index="4"] {
         background-size: rem(170) rem(110);
+      }
+
+      &[data-index="1"] {
+        margin-right: rem(8);
       }
 
       &[data-index="9"] {
