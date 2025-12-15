@@ -15,19 +15,13 @@ $story-cards: (
   color: var(--color-white);
   border-radius: rem(50);
   overflow: hidden;
-  row-gap: rem(115);
+  row-gap: rem(110);
 
   @include mobile {
-    padding: rem(40);
+    padding: rem(32) rem(40) rem(30) rem(30);
+    width: clamp(80%, rem(400), rem(318));
     height: rem(455);
     border-radius: rem(20);
-  }
-
-  @include mobile {
-    width: rem(318);
-    padding-top: rem(32);
-    padding-left: rem(30);
-    padding-bottom: rem(30);
     row-gap: 0;
   }
 
@@ -71,7 +65,7 @@ $story-cards: (
     flex-direction: column;
     row-gap: rem(37);
 
-    @include laptop {
+    @include desktop-below {
       padding-right: rem(304);
     }
 
@@ -81,9 +75,6 @@ $story-cards: (
 
     @include mobile {
       padding: 0;
-    }
-
-    @include mobile-s {
       row-gap: rem(20);
     }
   }
@@ -139,7 +130,7 @@ $story-cards: (
   &__description {
     display: flex;
     flex-direction: column;
-    row-gap: rem(27);
+    row-gap: rem(25);
 
     @include mobile {
       row-gap: rem(25);
@@ -148,7 +139,7 @@ $story-cards: (
 
   &__idea {
     @include tablet {
-      width: 100%;
+      width: 90%;
     }
   }
 

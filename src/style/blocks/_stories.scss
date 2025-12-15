@@ -6,11 +6,11 @@
   align-items: center;
   row-gap: rem(98);
 
-  @include laptop {
+  @include desktop-below {
     padding-inline: rem(53);
   }
 
-  @include mobile-s {
+  @include mobile {
     padding: 0;
     row-gap: rem(48);
   }
@@ -33,13 +33,9 @@
     text-align: center;
 
     @include mobile {
-      font-size: rem(40);
+      font-size: rem(34);
       line-height: 1.12;
       letter-spacing: 0.04rem;
-    }
-
-    @include mobile-s {
-      font-size: rem(34);
     }
   }
 
@@ -52,18 +48,15 @@
     color: var(--color-gray-300);
 
     @include mobile {
-      max-width: 60%;
-      font-size: rem(16);
-    }
-
-    @include mobile-s {
       max-width: 90%;
+      font-size: rem(16);
     }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: rem(51);
 
     @include mobile {
