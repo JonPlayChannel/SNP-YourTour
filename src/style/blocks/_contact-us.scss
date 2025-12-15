@@ -7,7 +7,7 @@
   align-items: center;
   gap: rem(30);
 
-  @include tablet {
+  @include desktop-below {
     width: 100%;
     justify-content: center;
   }
@@ -25,12 +25,7 @@
     background-size: rem(560) rem(371);
     border-radius: rem(50);
 
-    @include tablet {
-      @include square(rem(220));
-      background-size: rem(300) rem(220);
-    }
-
-    @include mobile-s {
+    @include mobile {
       width: rem(130);
       height: rem(133);
       background-size: rem(200) rem(133);
@@ -62,7 +57,7 @@
     line-height: 1.26;
     letter-spacing: 0;
 
-    @include mobile-s {
+    @include mobile {
       width: 70%;
       font-size: rem(23);
       font-weight: 700;
@@ -77,7 +72,7 @@
     letter-spacing: 0;
     color: var(--color-gray-300);
 
-    @include mobile-s {
+    @include mobile {
       width: 85%;
       font-size: rem(16);
       line-height: 1.4;

@@ -18,6 +18,7 @@ main {
   row-gap: rem(134.4);
 
   @include mobile {
+    margin-bottom: rem(76);
     row-gap: rem(76);
   }
 }

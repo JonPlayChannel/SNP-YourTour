@@ -48,7 +48,8 @@ $images: (
     padding: rem(42) rem(44) rem(38) rem(38);
 
     @include desktop-below {
-      padding: rem(39) rem(41) rem(42) rem(40);
+      padding: rem(42);
+      padding-inline: rem(41) rem(40);
     }
 
     @include mobile {
@@ -58,10 +59,10 @@ $images: (
   }
 
   &:nth-child(2) {
-    padding: rem(41) rem(38) rem(38) rem(44);
+    padding: rem(40) rem(38) rem(38) rem(44);
 
     @include desktop-below {
-      padding-block: rem(38) rem(42);
+      padding-block: rem(44) rem(30);
       padding-inline: rem(40);
     }
 

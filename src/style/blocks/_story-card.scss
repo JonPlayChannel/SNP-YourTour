@@ -141,6 +141,10 @@ $story-cards: (
     @include tablet {
       width: 90%;
     }
+
+    @include mobile {
+      width: 100%;
+    }
   }
 
   &__features-list {
