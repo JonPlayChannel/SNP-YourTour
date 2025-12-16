@@ -40,16 +40,12 @@
   }
 
   &__subtitle {
-    max-width: 35%;
+    max-width: 52%;
     font-size: rem(20);
     line-height: 1.42;
     letter-spacing: 0;
     text-align: center;
     color: var(--color-gray-300);
-
-    @include desktop-below {
-      max-width: 44%;
-    }
 
     @include mobile {
       max-width: 100%;
