@@ -8,7 +8,9 @@ $story-cards: (
 
 .story-card {
   position: relative;
-  height: rem(567);
+  margin: 0 auto;
+  width: clamp(rem(918), 80vw, rem(1170));
+  min-height: rem(567);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -17,9 +19,14 @@ $story-cards: (
   overflow: hidden;
   row-gap: rem(110);
 
+  @include desktop-below {
+    width: 100%;
+  }
+
   @include mobile {
     padding: rem(32) rem(40) rem(30) rem(30);
     width: clamp(80%, rem(400), rem(318));
+    min-height: 0;
     height: rem(455);
     border-radius: rem(20);
     row-gap: 0;
