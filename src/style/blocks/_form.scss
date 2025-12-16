@@ -2,6 +2,7 @@
 
 .form {
   padding: rem(70);
+  width: clamp(rem(918), 80vw, rem(1170));
   display: flex;
   flex-direction: column;
   font-size: rem(20);
@@ -13,6 +14,10 @@
   @include desktop-below {
     padding: rem(60);
     row-gap: rem(33);
+  }
+
+  @include tablet {
+    width: clamp(100%, 85vw, rem(918));
   }
 
   @include mobile {
@@ -61,7 +66,7 @@
     border-radius: rem(10);
 
     &:not(.textarea) {
-      width: fluid(500, 389);
+      width: 100%;
       height: rem(68);
 
       @include desktop-below {
@@ -92,9 +97,14 @@
       background-position: center;
       background-repeat: no-repeat;
 
+      @include desktop-below {
+        top: 31%;
+        left: 88%;
+      }
+
       @include tablet {
         top: 35%;
-        left: 94%;
+        left: 90%;
       }
 
       @include mobile {
