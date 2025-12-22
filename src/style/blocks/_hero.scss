@@ -1,16 +1,17 @@
 @use "../helpers" as *;
 
 .hero {
-  width: 100%;
-  max-width: 100vw;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
   min-height: rem(488);
   padding-top: rem(208);
   padding-bottom: rem(120);
   text-align: center;
   color: var(--color-white);
   background:
-          linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 39.9%), linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-          url("/background.png") 50% 50%;
+    linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 39.9%), linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/background.png") 50% 50%;
   background-size: cover;
 
   @include mobile {
