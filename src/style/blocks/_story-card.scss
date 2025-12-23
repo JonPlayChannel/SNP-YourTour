@@ -144,16 +144,6 @@ $story-cards: (
     }
   }
 
-  &__idea {
-    @include tablet {
-      width: 90%;
-    }
-
-    @include mobile {
-      width: 100%;
-    }
-  }
-
   &__features-list {
     padding-left: rem(30);
     list-style-type: inherit;
