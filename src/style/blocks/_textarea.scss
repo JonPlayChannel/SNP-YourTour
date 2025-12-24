@@ -11,6 +11,7 @@
 
   @include mobile {
     min-height: rem(132);
+    font-size: fluid(20, 16);
   }
 
   &:focus {

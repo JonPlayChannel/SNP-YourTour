@@ -1,8 +1,8 @@
 @use "../helpers" as *;
 
 .contact-us {
-  width: rem(771);
   margin-inline: auto;
+  padding-inline: rem(8.8);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -11,10 +11,6 @@
   @include desktop-below {
     width: 100%;
     justify-content: center;
-  }
-
-  @include mobile {
-    padding-inline: rem(8.8);
   }
 
   &__image {
@@ -26,12 +22,16 @@
     background-size: rem(560) rem(371);
     border-radius: rem(50);
 
-    @include mobile {
+    @include tablet {
       width: fluid(370, 130);
       height: fluid(370, 133);
       background-size: cover;
-      background-position-y: 53%;
       border-radius: fluid(50, 20);
+    }
+
+    @include mobile {
+      background-size: auto 100%;
+      background-position-y: 53%;
     }
   }
 

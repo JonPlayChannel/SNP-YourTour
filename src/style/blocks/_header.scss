@@ -39,6 +39,13 @@
     align-items: center;
   }
 
+  &__nav,
+  &__phone {
+    &-link {
+      font-size: rem(20);
+    }
+  }
+
   &__nav {
     @include tablet {
       display: none;
@@ -75,16 +82,9 @@
     }
   }
 
-  &__nav,
-  &__phone {
-    &-link {
-      font-size: rem(20);
-    }
-  }
-
   &__phone-link {
     @include mobile {
-      font-size: rem(16);
+      font-size: fluid(20, 16);
     }
   }
 

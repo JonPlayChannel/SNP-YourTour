@@ -94,7 +94,7 @@ $story-cards: (
 
     @include mobile {
       width: 50%;
-      font-size: rem(23);
+      font-size: fluid(35, 23);
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: 0.04rem;
@@ -108,7 +108,7 @@ $story-cards: (
     letter-spacing: 0;
 
     @include mobile {
-      font-size: rem(16);
+      font-size: fluid(20, 16);
       line-height: 1.42;
     }
   }
@@ -138,10 +138,6 @@ $story-cards: (
     display: flex;
     flex-direction: column;
     row-gap: rem(25);
-
-    @include mobile {
-      row-gap: rem(25);
-    }
   }
 
   &__features-list {
@@ -172,7 +168,7 @@ $story-cards: (
     letter-spacing: 0;
 
     @include mobile {
-      font-size: rem(16);
+      font-size: fluid(23, 16);
       line-height: 1.1;
     }
 

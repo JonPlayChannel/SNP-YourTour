@@ -94,7 +94,7 @@ $images: (
       line-height: 1.22;
 
       @include mobile {
-        font-size: rem(23);
+        font-size: fluid(35, 23);
         letter-spacing: 0.04rem;
       }
     }
@@ -106,7 +106,7 @@ $images: (
       letter-spacing: -0.01rem;
 
       @include mobile {
-        font-size: rem(16);
+        font-size: fluid(17, 16);
       }
     }
 
@@ -127,7 +127,7 @@ $images: (
 
     @include mobile {
       width: 97%;
-      font-size: rem(16);
+      font-size: fluid(23, 16);
       line-height: 1.415;
       letter-spacing: 0;
     }

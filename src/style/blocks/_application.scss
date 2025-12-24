@@ -33,7 +33,7 @@
     text-align: center;
 
     @include mobile {
-      font-size: rem(34);
+      font-size: fluid(59, 34);
       line-height: 1.12;
       letter-spacing: 0.04rem;
     }
@@ -49,7 +49,7 @@
 
     @include mobile {
       max-width: 100%;
-      font-size: rem(16);
+      font-size: fluid(20, 16);
     }
   }
 }

@@ -15,7 +15,7 @@
   @include mobile {
     width: rem(134);
     height: rem(47);
-    font-size: rem(16);
+    font-size: fluid(20, 16);
   }
 
   &-find-tour {
