@@ -7,11 +7,11 @@
   row-gap: rem(100);
 
   @include desktop-below {
-    padding-inline: rem(53);
+    padding-inline: var(--padding-inline-big);
   }
 
   @include mobile {
-    padding: 0;
+    padding-inline: var(--padding-inline-mobile);
     row-gap: rem(48);
   }
 

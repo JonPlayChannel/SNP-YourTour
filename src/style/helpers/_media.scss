@@ -1,9 +1,8 @@
 @use 'functions' as *;
 
 $desktop-min: 1024.98;
-$tablet-min: 768.98;
 $tablet-max: 1023.98;
-$mobile-max: 767.98;
+$mobile-max: 768.98;
 
 @mixin desktop {
   @media (width >= rem($desktop-min)) {

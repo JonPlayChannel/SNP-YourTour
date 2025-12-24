@@ -4,6 +4,7 @@
   width: rem(771);
   margin-inline: auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: rem(30);
 
@@ -13,7 +14,7 @@
   }
 
   @include mobile {
-    flex-direction: column;
+    padding-inline: rem(8.8);
   }
 
   &__image {
@@ -26,10 +27,11 @@
     border-radius: rem(50);
 
     @include mobile {
-      width: rem(130);
-      height: rem(133);
-      background-size: rem(200) rem(133);
-      border-radius: rem(20);
+      width: fluid(370, 130);
+      height: fluid(370, 133);
+      background-size: cover;
+      background-position-y: 53%;
+      border-radius: fluid(50, 20);
     }
   }
 
@@ -59,7 +61,7 @@
 
     @include mobile {
       width: 70%;
-      font-size: rem(23);
+      font-size: fluid(35, 23);
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: 0.06rem;
@@ -74,7 +76,7 @@
 
     @include mobile {
       width: 85%;
-      font-size: rem(16);
+      font-size: fluid(20, 16);
       line-height: 1.4;
     }
 

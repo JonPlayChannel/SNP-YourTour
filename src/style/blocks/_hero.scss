@@ -7,6 +7,7 @@
   min-height: rem(488);
   padding-top: rem(208);
   padding-bottom: rem(120);
+  @include flex-center(false, false);
   text-align: center;
   color: var(--color-white);
   background:
@@ -22,9 +23,7 @@
   &__inner {
     max-width: rem(768);
     margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-center(false, false);
     row-gap: rem(50);
 
     @include mobile {

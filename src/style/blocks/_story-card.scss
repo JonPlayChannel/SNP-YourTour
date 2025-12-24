@@ -25,7 +25,7 @@ $story-cards: (
 
   @include mobile {
     padding: rem(32) rem(40) rem(30) rem(30);
-    width: clamp(80%, rem(400), rem(318));
+    width: 100%;
     min-height: 0;
     height: rem(455);
     border-radius: rem(20);

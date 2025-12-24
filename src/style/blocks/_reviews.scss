@@ -6,6 +6,14 @@
   align-items: center;
   row-gap: rem(98);
 
+  @include desktop-below {
+    padding-inline: var(--padding-inline-big);
+  }
+
+  @include tablet {
+    padding-inline: var(--padding-inline-mobile);
+  }
+
   @include mobile {
     margin-bottom: rem(10);
     row-gap: rem(49);
@@ -44,26 +52,24 @@
     color: var(--color-gray-300);
 
     @include mobile {
-      max-width: 90%;
+      max-width: 100%;
       font-size: rem(16);
     }
   }
 
   &__content {
+    width: 100%;
     display: flex;
-    column-gap: rem(24);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: rem(24);
 
     @include desktop-below {
       column-gap: rem(18);
     }
 
-    @include tablet {
-      flex-direction: column;
-      align-items: center;
-      row-gap: rem(24);
-    }
-
     @include mobile {
+      flex-wrap: wrap;
       row-gap: rem(18);
     }
   }

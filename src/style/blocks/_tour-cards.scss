@@ -21,28 +21,32 @@ $cards: (
   }
 
   @include tablet {
-    padding-inline: rem(53);
+    padding-inline: var(--padding-inline-big);
   }
 
   @include mobile {
     padding-inline: rem(21);
-    flex-direction: column;
     align-items: center;
   }
 
   &__item {
     position: relative;
-    width: rem(370);
+    width: min(30vw, rem(370));
     height: rem(531);
     padding: rem(50);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: start;
     border-radius: rem(50);
     overflow: hidden;
 
     @include desktop-below {
-      width: rem(450);
+      width: clamp(rem(318), 50vw, rem(450));
+    }
+
+    @include tablet {
+      width: clamp(rem(318), 37vw, rem(450));
     }
 
     @each $num, $img in $cards {
@@ -56,10 +60,11 @@ $cards: (
     }
 
     @include mobile {
-      --size: #{rem(318)};
+      --max-size: #{rem(318)};
 
       padding: rem(25);
-      @include square(var(--size));
+      min-width: 100%;
+      height: var(--max-size);
       border-radius: rem(20);
     }
 
@@ -114,7 +119,7 @@ $cards: (
     letter-spacing: 0.01rem;
 
     @include mobile {
-      font-size: rem(23);
+      font-size: fluid(35, 23);
       line-height: 1.2;
       letter-spacing: 0.065rem;
     }
@@ -126,7 +131,7 @@ $cards: (
     letter-spacing: -0.01rem;
 
     @include mobile {
-      font-size: rem(16);
+      font-size: fluid(17, 16);
       line-height: 1.1;
     }
   }
@@ -140,7 +145,7 @@ $cards: (
     letter-spacing: 0;
 
     @include mobile {
-      font-size: rem(16);
+      font-size: fluid(23, 16);
       line-height: 1.1;
     }
 

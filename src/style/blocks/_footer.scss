@@ -7,15 +7,11 @@ $icons: (
 );
 
 .footer {
-  padding-block: rem(30);
+  padding: rem(30) var(--padding-inline-big);
   font-size: rem(20);
   line-height: 1.42;
   letter-spacing: 0;
   background-color: var(--color-beige-200);
-
-  @include desktop-below {
-    padding-inline: rem(53);
-  }
 
   @include mobile {
     padding: 0;
@@ -29,11 +25,10 @@ $icons: (
 
     @include tablet {
       margin-inline: 0;
-      padding-inline: rem(53);
     }
 
     @include mobile {
-      padding: rem(21) rem(21.5);
+      padding: var(--padding-inline-mobile) rem(21.5);
       flex-direction: column;
       row-gap: rem(5);
     }
