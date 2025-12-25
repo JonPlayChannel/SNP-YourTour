@@ -15,6 +15,10 @@ $images: (
   border-radius: rem(50);
 
   @include tablet {
+    width: clamp(rem(318), 45vw, rem(450))
+  }
+
+  @include mobile {
     width: 100%;
   }
 
