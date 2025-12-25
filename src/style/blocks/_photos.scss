@@ -16,49 +16,6 @@ $photos: (
   13: "./photos/photo-13.png"
 );
 
-$styles-big: (
-  1: (width: 444, height: 301),
-  2: (width: 441.5, height: 301),
-  3: (width: 441.5, height: 301),
-  4: (width: 443, height: 301),
-  5: (width: 349.16, height: 301),
-  6: (width: 347.32, height: 301),
-  7: (width: 347.32, height: 301),
-  8: (width: 347.32, height: 301),
-  9: (width: 348.87, height: 301),
-  10: (width: 442.5, height: 300),
-  11: (width: 442.5, height: 301),
-  12: (width: 442.5, height: 301),
-  13: (width: 442.5, height: 300),
-);
-
-$styles-medium: (
-        1: (width: 314.67, height: 300),
-        3: (width: 314.67, height: 301),
-        4: (width: 314.67, height: 300),
-
-        5: (width: 231, height: 301),
-        6: (width: 231, height: 301),
-        8: (width: 231, height: 301),
-        9: (width: 231, height: 301),
-
-        10: (width: 314.67, height: 300),
-        11: (width: 314.67, height: 301),
-        12: (width: 314.67, height: 301)
-);
-
-$styles-small: (
-  1: (width: 150),
-  4: (width: 150),
-
-  5: (width: 99.33),
-  8: (width: 99.33),
-  9: (width: 99.33),
-
-  10: (width: 154),
-  11: (width: 154),
-);
-
 .photos {
   padding-inline: rem(30);
   display: flex;
@@ -112,53 +69,86 @@ $styles-small: (
     }
   }
 
+  &__content,
+  &__row {
+    width: 100%;
+  }
+
   &__content {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: rem(30);
+    row-gap: rem(30);
+
+    @include mobile {
+      row-gap: rem(18);
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    column-gap: fluid(30, 20);
 
     @include desktop-below {
       column-gap: rem(20);
     }
 
     @include mobile {
-      column-gap: rem(10);
-      row-gap: rem(18);
-    }
-  }
-
-  &__group {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: rem(30);
-
-    @include desktop-below {
-      flex-wrap: nowrap;
-      gap: rem(20);
-    }
-
-    @include mobile {
       &:first-child {
-        gap: rem(18);
+        column-gap: fluid(20, 18);
       }
 
       &:not(:first-child) {
-        gap: rem(10);
+        gap: fluid(20, 10);
+      }
+    }
+
+    &:first-child div, {
+      width: 25%;
+
+      @include desktop-below {
+        width: 35%;
+      }
+
+      @include mobile {
+        width: 50%;
+      }
+    }
+
+    &:nth-child(2) div {
+      width: 20%;
+
+      @include desktop-below {
+        width: 25%;
+      }
+
+      @include mobile {
+        width: 33%;
+      }
+    }
+
+    &:last-child div {
+      width: 24%;
+
+      @include desktop-below {
+        width: 35%;
+      }
+
+      @include mobile {
+        width: 50%;
       }
     }
   }
 
   &__item {
+    height: rem(301);
     display: inline-block;
     border-radius: rem(50);
     overflow: hidden;
 
-    @each $key, $values in $styles-big {
+    @each $key, $values in $photos {
       &[data-index="#{$key}"] {
-        width: #{map-get($values, width)}px;
-        height: #{map-get($values, height)}px;
         @if $key == 12 {
           background-image:
                   linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.06) 48.44%, rgba(0, 0, 0, 0.1) 100%),
@@ -174,13 +164,24 @@ $styles-small: (
 
     &[data-index="1"],
     &[data-index="4"] {
-      background-position: center;
-      background-size: rem(500) rem(300);
+      background-size: cover;
+
+      @include mobile {
+        background-size: cover;
+      }
     }
 
     &[data-index="9"] {
       background-position-y: 53%;
       background-size: 100% rem(600);
+
+      @include desktop-below {
+        background-size: 100% rem(345);
+      }
+
+      @include mobile {
+        background-size: 100% rem(150);
+      }
     }
 
     &[data-index="13"] {
@@ -191,34 +192,6 @@ $styles-small: (
     @include desktop-below {
       $skipped-photos: (2, 7, 13);
 
-      @each $key, $values in $styles-medium {
-        &[data-index="#{$key}"] {
-          width: #{map-get($values, width)}px;
-          height: #{map-get($values, height)}px;
-        }
-      }
-
-      @each $skip in $skipped-photos {
-        &[data-index="#{$skip}"] {
-          display: none;
-        }
-      }
-
-      &[data-index="1"],
-      &[data-index="4"] {
-        background-position: center;
-        background-size: rem(355) rem(300);
-      }
-
-      &[data-index="9"] {
-        background-position-y: 53%;
-        background-size: 100% rem(345);
-      }
-    }
-
-    @include tablet {
-      $skipped-photos: (2, 3, 6, 7, 12, 13);
-
       @each $skip in $skipped-photos {
         &[data-index="#{$skip}"] {
           display: none;
@@ -227,27 +200,16 @@ $styles-small: (
     }
 
     @include mobile {
-      border-radius: rem(20);
+      height: fluid(301, 110);
+      background-size: cover;
+      border-radius: fluid(50, 20);
 
-      @each $key, $values in $styles-small {
-        &[data-index="#{$key}"] {
-          width: #{map-get($values, width)}px;
-          height: 110px;
+      $skipped-photos: (2, 3, 6, 7, 12, 13);
+
+      @each $skip in $skipped-photos {
+        &[data-index="#{$skip}"] {
+          display: none;
         }
-      }
-
-
-      &[data-index="1"], &[data-index="4"] {
-        background-size: rem(170) rem(110);
-      }
-
-      &[data-index="1"] {
-        margin-right: rem(8);
-      }
-
-      &[data-index="9"] {
-        background-position-y: 50%;
-        background-size: 100% rem(150);
       }
     }
 
