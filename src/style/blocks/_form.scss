@@ -22,6 +22,7 @@
 
   @include mobile {
     padding: rem(20) rem(20) rem(40);
+    width: 100%;
     font-size: fluid(20, 16);
     border-radius: rem(30);
     row-gap: rem(30);
