@@ -6,12 +6,7 @@
   align-items: center;
   row-gap: rem(100);
 
-  @include desktop-below {
-    padding-inline: var(--padding-inline-big);
-  }
-
-  @include mobile {
-    width: 100%;
+  @include tablet {
     padding-inline: var(--padding-inline-mobile);
     row-gap: rem(40);
   }

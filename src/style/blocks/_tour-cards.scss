@@ -20,12 +20,7 @@ $cards: (
     gap: rem(18);
   }
 
-  @include tablet {
-    padding-inline: var(--padding-inline-big);
-  }
-
   @include mobile {
-    padding-inline: rem(21);
     align-items: center;
   }
 
@@ -33,7 +28,7 @@ $cards: (
     position: relative;
     width: min(30vw, rem(370));
     height: rem(531);
-    padding: rem(50);
+    padding: fluid(50, 28);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,10 +38,12 @@ $cards: (
 
     @include desktop-below {
       width: clamp(rem(318), 50vw, rem(450));
+      padding: rem(50);
     }
 
     @include tablet {
-      width: clamp(rem(318), 37vw, rem(450));
+      width: clamp(rem(318), 46vw, rem(450));
+      padding: fluid(50, 34);
     }
 
     @each $num, $img in $cards {

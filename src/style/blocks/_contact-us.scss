@@ -4,13 +4,16 @@
   margin-inline: auto;
   padding-inline: rem(8.8);
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: rem(30);
 
   @include desktop-below {
     width: 100%;
     justify-content: center;
+  }
+
+  @include mobile {
+    flex-direction: column;
   }
 
   &__image {

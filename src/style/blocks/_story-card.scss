@@ -9,7 +9,7 @@ $story-cards: (
 .story-card {
   position: relative;
   margin: 0 auto;
-  width: clamp(rem(918), 80vw, rem(1170));
+  width: clamp(rem(918), 90vw, rem(1170));
   min-height: rem(567);
   display: flex;
   flex-direction: column;
@@ -67,7 +67,7 @@ $story-cards: (
   &__body {
     padding-top: rem(62);
     padding-left: rem(60);
-    padding-right: rem(556);
+    padding-right: fluid(556, 304);
     display: flex;
     flex-direction: column;
     row-gap: rem(37);
@@ -138,6 +138,14 @@ $story-cards: (
     display: flex;
     flex-direction: column;
     row-gap: rem(25);
+
+    @include tablet {
+      max-width: 70%;
+    }
+
+    @include mobile {
+      max-width: 100%;
+    }
   }
 
   &__features-list {

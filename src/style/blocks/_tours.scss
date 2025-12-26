@@ -5,6 +5,10 @@
   flex-direction: column;
   align-items: center;
 
+  @include desktop-below {
+    padding-inline: var(--padding-inline-mobile);
+  }
+
   &__header {
     max-width: rem(700);
     display: flex;

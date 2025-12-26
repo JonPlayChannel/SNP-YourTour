@@ -10,8 +10,11 @@
     padding-inline: var(--padding-inline-big);
   }
 
-  @include mobile {
+  @include tablet {
     padding-inline: var(--padding-inline-mobile);
+  }
+
+  @include mobile {
     row-gap: rem(48);
   }
 

@@ -2,7 +2,7 @@
 
 .form {
   padding: rem(70);
-  width: clamp(rem(918), 80vw, rem(1170));
+  width: clamp(rem(918), 90vw, var(--container-width));
   display: flex;
   flex-direction: column;
   font-size: rem(20);
@@ -13,18 +13,17 @@
 
   @include desktop-below {
     padding: rem(60);
+    width: 94vw;
     row-gap: rem(33);
   }
 
-  @include tablet {
-    width: clamp(100%, 85vw, rem(918));
-  }
-
   @include mobile {
-    padding: rem(20) rem(20) rem(40);
+    padding-top: fluid(60, 20);
+    padding-inline: fluid(60, 20);
+    padding-bottom: fluid(60, 40);
     width: 100%;
     font-size: fluid(20, 16);
-    border-radius: rem(30);
+    border-radius: fluid(50, 30);
     row-gap: rem(30);
   }
 

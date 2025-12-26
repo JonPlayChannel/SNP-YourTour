@@ -1,14 +1,11 @@
 @use '../helpers' as *;
 
 .reviews {
+  //padding-inline: var(--padding-inline-big);
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: rem(98);
-
-  @include desktop-below {
-    padding-inline: var(--padding-inline-big);
-  }
 
   @include tablet {
     padding-inline: var(--padding-inline-mobile);
@@ -60,7 +57,6 @@
   &__content {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: rem(24);
 
